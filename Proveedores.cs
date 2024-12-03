@@ -23,9 +23,26 @@ namespace WOLFSFITNESSMARKET
             CargarDatosProveedores();
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int HTCLIENT = 0x1;
+
+
+            // Ignorar cualquier intento de mover el formulario
+            if (m.Msg == WM_NCHITTEST)
+            {
+                m.Result = (IntPtr)HTCLIENT;  // Establecer que el área activa es el cliente, no la barra de título
+            }
+            else
+            {
+                base.WndProc(ref m); // Llamar al procesamiento estándar para otros mensajes
+            }
+        }
+
         private void CargarDatosProveedores()
         {
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
             string query = "SELECT * FROM Proveedores";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -71,7 +88,7 @@ namespace WOLFSFITNESSMARKET
 
         private void guna2Button2_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             if (ValidarCampos())
             {
@@ -123,7 +140,7 @@ namespace WOLFSFITNESSMARKET
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este proveedor?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                 int proveedorId = Convert.ToInt32(guna2TextBox6.Text);
                 string query = "DELETE FROM Proveedores WHERE ProveedorID = @ProveedorID";
 
@@ -170,7 +187,7 @@ namespace WOLFSFITNESSMARKET
                 return;
             }
 
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -230,7 +247,7 @@ namespace WOLFSFITNESSMARKET
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                     string query = "UPDATE Proveedores SET Nombre = @Nombre, Direccion = @Direccion, Telefono = @Telefono, Correo = @Correo WHERE ProveedorID = @ProveedorID";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -282,10 +299,7 @@ namespace WOLFSFITNESSMARKET
 
                 // Asignar los valores de las celdas de la fila a los TextBox
                 guna2TextBox6.Text = selectedRow.Cells["ProveedorID"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox1.Text = selectedRow.Cells["Nombre"].Value.ToString();       // Ajusta el nombre de la columna
-                guna2TextBox2.Text = selectedRow.Cells["Direccion"].Value.ToString();    // Ajusta el nombre de la columna
-                guna2TextBox3.Text = selectedRow.Cells["Telefono"].Value.ToString();     // Ajusta el nombre de la columna
-                guna2TextBox4.Text = selectedRow.Cells["Correo"].Value.ToString();       // Ajusta el nombre de la columna
+            
             }
         }
     }

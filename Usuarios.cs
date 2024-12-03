@@ -19,6 +19,23 @@ namespace WOLFSFITNESSMARKET
 
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int HTCLIENT = 0x1;
+
+
+            // Ignorar cualquier intento de mover el formulario
+            if (m.Msg == WM_NCHITTEST)
+            {
+                m.Result = (IntPtr)HTCLIENT;  // Establecer que el área activa es el cliente, no la barra de título
+            }
+            else
+            {
+                base.WndProc(ref m); // Llamar al procesamiento estándar para otros mensajes
+            }
+        }
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
             CargarDatosUsuarios();
@@ -26,7 +43,7 @@ namespace WOLFSFITNESSMARKET
         private void CargarDatosUsuarios()
         {
             // Cadena de conexión con autenticación de Windows
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
 
             // Consulta SQL para seleccionar los datos de la tabla usuario
@@ -92,7 +109,7 @@ namespace WOLFSFITNESSMARKET
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             // Cadena de conexión
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Variables para capturar los datos del usuario
             string nombre = guna2TextBox1.Text;
@@ -164,7 +181,7 @@ namespace WOLFSFITNESSMARKET
             if (result == DialogResult.Yes)
             {
                 // Cadena de conexión
-                string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                 // Obtener el ID del usuario seleccionado
                 int usuarioId = Convert.ToInt32(guna2TextBox5.Text);
@@ -222,12 +239,6 @@ namespace WOLFSFITNESSMARKET
 
                 // Asignar los valores de las celdas de la fila a los TextBox
                 guna2TextBox5.Text = selectedRow.Cells["UsuarioID"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox1.Text = selectedRow.Cells["Nombre"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox2.Text = selectedRow.Cells["Correo"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox3.Text = selectedRow.Cells["Contrasena"].Value.ToString();  // Ajusta el nombre de la columna
-
-                // Asignar el valor al ComboBox (asegúrate que el valor que le pases esté en la lista del ComboBox)
-                guna2ComboBox1.SelectedItem = selectedRow.Cells["Rol"].Value.ToString();  // Ajusta el nombre de la columna
             }
         }
 
@@ -248,7 +259,7 @@ namespace WOLFSFITNESSMARKET
             }
 
             // Cadena de conexión
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Consulta SQL para buscar solo por UsuarioID
             string query = "SELECT * FROM Usuarios WHERE UsuarioID = @SearchTerm";
@@ -328,7 +339,7 @@ namespace WOLFSFITNESSMARKET
                 if (result == DialogResult.Yes)
                 {
                     // Cadena de conexión
-                    string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                     // Consulta SQL para actualizar el usuario
                     string query = "UPDATE Usuarios SET Nombre = @Nombre, Correo = @Correo, Contrasena = @Contrasena, Rol = @Rol WHERE UsuarioID = @UsuarioID";
@@ -380,5 +391,9 @@ namespace WOLFSFITNESSMARKET
 
         }
 
+        private void guna2TextBox4_Click(object sender, EventArgs e)
+        {
+            guna2TextBox4.Clear();
+        }
     }
 }

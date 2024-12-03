@@ -10,46 +10,84 @@ using System.Windows.Forms;
 
 namespace WOLFSFITNESSMARKET
 {
-    public partial class Menu : MetroFramework.Forms.MetroForm
+    public partial class Menu : Form
     {
         public Menu()
         {
             InitializeComponent();
+
+          
+          
+
+            // Crear y mostrar el formulario hijo
+            Logofijocs hijo = new Logofijocs            {
+                MdiParent = this, // Establecer el formulario principal como contenedor
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(0, this.MainMenuStrip != null ? this.MainMenuStrip.Height : 0) // Posicionarlo debajo del menú
+            };
+
+            hijo.Show();
+        }
+        
+
+        private void Form131_Load(object sender, EventArgs e)
+        {
+           
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Usuarios usuarios = new Usuarios
+            {
+                MdiParent = this, // Establecer el formulario principal como contenedor
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(0, this.MainMenuStrip != null ? this.MainMenuStrip.Height : 0) // Posicionarlo debajo del menú
+            };
 
+            usuarios.Show();
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Clientes clientes = new Clientes
+            {
+                MdiParent = this, // Establecer el formulario principal como contenedor
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(0, this.MainMenuStrip != null ? this.MainMenuStrip.Height : 0) // Posicionarlo debajo del menú
+            };
 
+            clientes.Show();
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Usuarios formUsuarios = new Usuarios();
-            formUsuarios.Show();
+            // Crear y mostrar el formulario hijo
+            Inventario inventario = new Inventario
+            {
+                MdiParent = this, // Establecer el formulario principal como contenedor
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(0, this.MainMenuStrip != null ? this.MainMenuStrip.Height : 0) // Posicionarlo debajo del menú
+            };
+
+            inventario.Show();
         }
 
-        private void guna2Button5_Click(object sender, EventArgs e)
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clientes formclientes = new Clientes();
-            formclientes.Show();
+            // Crear y mostrar el formulario hijo
+            Proveedores proveedores = new Proveedores
+            {
+                MdiParent = this, // Establecer el formulario principal como contenedor
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(0, this.MainMenuStrip != null ? this.MainMenuStrip.Height : 0) // Posicionarlo debajo del menú
+            };
 
+            proveedores.Show();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Proveedores formProveedores = new Proveedores();
-            formProveedores.Show();
-        }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            Inventario formInventario = new Inventario();
-            formInventario.Show();
         }
     }
 }

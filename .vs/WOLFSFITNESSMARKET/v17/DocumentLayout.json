@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\SIS-VENTAS\\",
+  "WorkspaceRootPath": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\user\\desktop\\sis-ventas\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\jeffe\\onedrive\\escritorio\\sistema-de-venta-\\proveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:proveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\user\\desktop\\sis-ventas\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\jeffe\\onedrive\\escritorio\\sistema-de-venta-\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\jeffe\\onedrive\\escritorio\\sistema-de-venta-\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\jeffe\\onedrive\\escritorio\\sistema-de-venta-\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\jeffe\\onedrive\\escritorio\\sistema-de-venta-\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +35,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Inventario.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\SIS-VENTAS\\Inventario.cs",
-              "RelativeDocumentMoniker": "Inventario.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\SIS-VENTAS\\Inventario.cs",
-              "RelativeToolTip": "Inventario.cs",
-              "ViewState": "AgIAABwBAAAAAAAAAAAUwC0BAAA5AAAAAAAAAA==",
+              "Title": "Proveedores.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Proveedores.cs",
+              "RelativeDocumentMoniker": "Proveedores.cs",
+              "ToolTip": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Proveedores.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Proveedores.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T22:20:30.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T00:52:54.495Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Inventario.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\SIS-VENTAS\\Inventario.cs",
-              "RelativeDocumentMoniker": "Inventario.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\SIS-VENTAS\\Inventario.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Inventario.cs [Dise\u00F1o]",
+              "Title": "Usuarios.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Usuarios.cs",
+              "RelativeDocumentMoniker": "Usuarios.cs",
+              "ToolTip": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Usuarios.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Usuarios.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T22:20:27.724Z",
+              "WhenOpened": "2024-12-03T00:52:38.893Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAjwC4AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:46:13.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Menu.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Menu.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Menu.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:46:10.671Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Usuarios.cs",
+              "DocumentMoniker": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Usuarios.cs",
+              "RelativeDocumentMoniker": "Usuarios.cs",
+              "ToolTip": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\Usuarios.cs",
+              "RelativeToolTip": "Usuarios.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAIA0wO4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T00:45:48.631Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -23,10 +23,28 @@ namespace WOLFSFITNESSMARKET
             CargarDatosClientes();
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int HTCLIENT = 0x1;
+
+
+            // Ignorar cualquier intento de mover el formulario
+            if (m.Msg == WM_NCHITTEST)
+            {
+                m.Result = (IntPtr)HTCLIENT;  // Establecer que el área activa es el cliente, no la barra de título
+            }
+            else
+            {
+                base.WndProc(ref m); // Llamar al procesamiento estándar para otros mensajes
+            }
+        }
+
+
         private void CargarDatosClientes()
         {
             // Cadena de conexión con autenticación de Windows
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Consulta SQL para seleccionar los datos de la tabla Clientes
             string query = "SELECT * FROM Clientes";
@@ -72,105 +90,10 @@ namespace WOLFSFITNESSMARKET
         }
 
 
-        private void guna2DataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Obtener la fila seleccionada
-                DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex];
-
-                // Asignar los valores de las celdas de la fila a los TextBox
-                guna2TextBox6.Text = selectedRow.Cells["ClienteID"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox1.Text = selectedRow.Cells["Nombre"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox2.Text = selectedRow.Cells["Direccion"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox3.Text = selectedRow.Cells["Telefono"].Value.ToString();  // Ajusta el nombre de la columna
-                guna2TextBox4.Text = selectedRow.Cells["Correo"].Value.ToString();  // Ajusta el nombre de la columna
-            }
-
-        }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string searchTerm = guna2TextBox5.Text.Trim();
 
-            // Si el cuadro de texto está vacío, mostrar todos los clientes
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                CargarDatosClientes();  // Cargar todos los datos de nuevo
-                return;
-            }
-
-            // Cadena de conexión
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
-
-            // Consulta SQL para buscar solo por ClienteID
-            string query = "SELECT * FROM Clientes WHERE ClienteID = @SearchTerm";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Verificar si el término de búsqueda es un número (ID del cliente)
-                        if (int.TryParse(searchTerm, out int clienteId))
-                        {
-                            // Si es un número, lo buscamos por ClienteID
-                            command.Parameters.AddWithValue("@SearchTerm", clienteId);  // Buscar por ClienteID
-
-                            // Ejecutar la consulta y llenar el DataTable
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Verificar si se encontraron resultados
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Asignar los resultados al DataGridView
-                                guna2DataGridView1.DataSource = dataTable;
-                            }
-                            else
-                            {
-                                // Si no hay resultados, mostrar un mensaje opcional o limpiar el DataGridView
-                                MessageBox.Show("No se encontraron resultados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                guna2DataGridView1.DataSource = null;  // Limpiar la vista del DataGridView si no hay resultados
-                            }
-                        }
-                        else
-                        {
-                            // Si no es un número, buscar por nombre del cliente
-                            string queryByName = "SELECT * FROM Clientes WHERE Nombre LIKE @SearchTerm";
-                            command.CommandText = queryByName;
-                            command.Parameters.Clear();  // Limpiar los parámetros previos
-                            command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");  // Buscar por nombre
-
-                            // Ejecutar la consulta y llenar el DataTable
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Verificar si se encontraron resultados
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Asignar los resultados al DataGridView
-                                guna2DataGridView1.DataSource = dataTable;
-                            }
-                            else
-                            {
-                                // Si no hay resultados, mostrar un mensaje opcional o limpiar el DataGridView
-                                MessageBox.Show("No se encontraron resultados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                guna2DataGridView1.DataSource = null;  // Limpiar la vista del DataGridView si no hay resultados
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrió un error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
 
         private void guna2Button3_Click_1(object sender, EventArgs e)
@@ -187,7 +110,7 @@ namespace WOLFSFITNESSMARKET
             if (result == DialogResult.Yes)
             {
                 // Cadena de conexión
-                string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                 // Obtener el ID del cliente seleccionado
                 int clienteId = Convert.ToInt32(guna2TextBox6.Text);
@@ -233,7 +156,7 @@ namespace WOLFSFITNESSMARKET
         private void guna2Button2_Click_1(object sender, EventArgs e)
         {
             // Cadena de conexión
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Variables para capturar los datos del cliente
             string nombre = guna2TextBox1.Text;
@@ -309,7 +232,7 @@ namespace WOLFSFITNESSMARKET
                 if (result == DialogResult.Yes)
                 {
                     // Cadena de conexión
-                    string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                     // Consulta SQL para actualizar el cliente
                     string query = "UPDATE Clientes SET Nombre = @Nombre, Direccion = @Direccion, Telefono = @Telefono, Correo = @Correo WHERE ClienteID = @ClienteID";
@@ -340,7 +263,7 @@ namespace WOLFSFITNESSMARKET
                                 else
                                 {
                                     MessageBox.Show("No se pudo actualizar el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    
+
                                 }
                             }
                         }
@@ -359,5 +282,68 @@ namespace WOLFSFITNESSMARKET
                 }
             }
         }
+
+        private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila seleccionada
+                DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex];
+
+                // Asignar los valores de las celdas de la fila a los TextBox
+                guna2TextBox6.Text = selectedRow.Cells["ClienteID"].Value.ToString();  // Ajusta el nombre de la columna
+
+            }
+        }
+
+     private void guna2TextBox5_TextChanged(object sender, EventArgs e)
+        {
+            // Cadena de conexión a tu base de datos
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Consulta SQL dinámica
+                string query = @"
+        SELECT *
+        FROM Clientes
+        WHERE 
+            (CAST(ClienteID AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+            (Nombre LIKE '%' + @Busqueda + '%') OR
+            (Direccion LIKE '%' + @Busqueda + '%') OR
+            (Telefono LIKE '%' + @Busqueda + '%') OR
+            (Correo LIKE '%' + @Busqueda + '%') OR
+            (CONVERT(NVARCHAR, FechaRegistro, 120) LIKE '%' + @Busqueda + '%');
+        ";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Parámetro para la búsqueda
+                    command.Parameters.AddWithValue("@Busqueda", guna2TextBox5.Text);
+
+                    // Abrir la conexión
+                    connection.Open();
+
+                    // Ejecutar el comando y llenar el DataTable con los resultados
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable results = new DataTable();
+                    adapter.Fill(results);
+
+                    // Mostrar los resultados en un DataGridView (ajusta el nombre del control según tu diseño)
+                    guna2DataGridView1.DataSource = results;
+                }
+            }
+        }
+
+        private void guna2TextBox5_Click(object sender, EventArgs e)
+        {
+            guna2TextBox5.Clear();
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
     }
 }
+

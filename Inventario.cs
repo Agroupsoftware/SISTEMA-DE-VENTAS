@@ -17,6 +17,7 @@ namespace WOLFSFITNESSMARKET
         public Inventario()
         {
             InitializeComponent();
+           
         }
 
         private void Inventario_Load(object sender, EventArgs e)
@@ -24,9 +25,26 @@ namespace WOLFSFITNESSMARKET
             CargarDatosInventario();
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int HTCLIENT = 0x1;
+            
+
+            // Ignorar cualquier intento de mover el formulario
+            if (m.Msg == WM_NCHITTEST)
+            {
+                m.Result = (IntPtr)HTCLIENT;  // Establecer que el área activa es el cliente, no la barra de título
+            }
+            else
+            {
+                base.WndProc(ref m); // Llamar al procesamiento estándar para otros mensajes
+            }
+        }
+
         private void CargarDatosInventario()
         {
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
             string query = "SELECT * FROM Inventario";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -81,7 +99,7 @@ namespace WOLFSFITNESSMARKET
 
         private void guna2Button2_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             if (ValidarCampos())
             {
@@ -132,12 +150,7 @@ namespace WOLFSFITNESSMARKET
                 DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex];
 
                 guna2TextBox8.Text = selectedRow.Cells["ProductoID"].Value.ToString();
-                guna2TextBox1.Text = selectedRow.Cells["Nombre"].Value.ToString();
-                guna2TextBox2.Text = selectedRow.Cells["Descripcion"].Value.ToString();
-                guna2TextBox3.Text = selectedRow.Cells["PrecioCosto"].Value.ToString();
-                guna2TextBox4.Text = selectedRow.Cells["PrecioVenta"].Value.ToString();
-                guna2TextBox5.Text = selectedRow.Cells["StockActual"].Value.ToString();
-                guna2TextBox6.Text = selectedRow.Cells["StockMinimo"].Value.ToString();
+        
             }
 
         }
@@ -165,7 +178,7 @@ namespace WOLFSFITNESSMARKET
                 if (result == DialogResult.Yes)
                 {
                     // Cadena de conexión a la base de datos
-                    string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                     // Consulta de actualización SQL
                     string query = "UPDATE Inventario SET Nombre = @Nombre, Descripcion = @Descripcion, PrecioCosto = @PrecioCosto, " +
                                    "PrecioVenta = @PrecioVenta, StockActual = @StockActual, StockMinimo = @StockMinimo WHERE ProductoID = @ProductoID";
@@ -217,7 +230,7 @@ namespace WOLFSFITNESSMARKET
 
         private void guna2Button3_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(guna2TextBox6.Text))
+            if (string.IsNullOrWhiteSpace(guna2TextBox8.Text))
             {
                 MessageBox.Show("Por favor, seleccione un producto para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -226,7 +239,7 @@ namespace WOLFSFITNESSMARKET
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                 int productoId = Convert.ToInt32(guna2TextBox8.Text);
                 string query = "DELETE FROM Inventario WHERE ProductoID = @ProductoID";
 
@@ -274,7 +287,7 @@ namespace WOLFSFITNESSMARKET
             }
 
             // Cadena de conexión
-            string connectionString = "Server=DESKTOP-GM5B0SU;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Consulta SQL para buscar solo por ProductoID
             string query = "SELECT * FROM Inventario WHERE ProductoID = @SearchTerm";
@@ -345,6 +358,16 @@ namespace WOLFSFITNESSMARKET
                 }
             }
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
