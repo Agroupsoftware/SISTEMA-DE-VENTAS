@@ -37,7 +37,7 @@ namespace WOLFSFITNESSMARKET
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new Usuarios
+            Usuario usuarios = new Usuario
             {
                 MdiParent = this, // Establecer el formulario principal como contenedor
                 StartPosition = FormStartPosition.Manual,
@@ -49,7 +49,7 @@ namespace WOLFSFITNESSMARKET
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clientes clientes = new Clientes
+            Cliente clientes = new Cliente
             {
                 MdiParent = this, // Establecer el formulario principal como contenedor
                 StartPosition = FormStartPosition.Manual,
@@ -62,7 +62,7 @@ namespace WOLFSFITNESSMARKET
         private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Crear y mostrar el formulario hijo
-            Inventario inventario = new Inventario
+            Inventary inventario = new Inventary
             {
                 MdiParent = this, // Establecer el formulario principal como contenedor
                 StartPosition = FormStartPosition.Manual,
@@ -75,7 +75,7 @@ namespace WOLFSFITNESSMARKET
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Crear y mostrar el formulario hijo
-            Proveedores proveedores = new Proveedores
+            Proveedore proveedores = new Proveedore
             {
                 MdiParent = this, // Establecer el formulario principal como contenedor
                 StartPosition = FormStartPosition.Manual,
@@ -86,6 +86,16 @@ namespace WOLFSFITNESSMARKET
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
 
         }

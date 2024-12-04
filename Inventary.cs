@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-
+using Guna.UI2.WinForms;
 
 namespace WOLFSFITNESSMARKET
 {
-    public partial class Inventario : MetroFramework.Forms.MetroForm
+    public partial class Inventary : Form
     {
-        public Inventario()
+        public Inventary()
         {
             InitializeComponent();
-           
         }
 
-        private void Inventario_Load(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Inventary_Load(object sender, EventArgs e)
         {
             CargarDatosInventario();
         }
@@ -29,7 +33,7 @@ namespace WOLFSFITNESSMARKET
         {
             const int WM_NCHITTEST = 0x84;
             const int HTCLIENT = 0x1;
-            
+
 
             // Ignorar cualquier intento de mover el formulario
             if (m.Msg == WM_NCHITTEST)
@@ -57,7 +61,7 @@ namespace WOLFSFITNESSMARKET
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    guna2DataGridView1.DataSource = dataTable;
+                    dataGridView1.DataSource = dataTable;
                 }
                 catch (Exception ex)
                 {
@@ -68,13 +72,13 @@ namespace WOLFSFITNESSMARKET
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrWhiteSpace(guna2TextBox1.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox2.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox3.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox4.Text) ||
-                 string.IsNullOrWhiteSpace(guna2TextBox5.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox6.Text))
-  
+            if (string.IsNullOrWhiteSpace(textBox2.Text) ||
+                string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                string.IsNullOrWhiteSpace(textBox5.Text) ||
+                 string.IsNullOrWhiteSpace(textBox6.Text) ||
+                string.IsNullOrWhiteSpace(textBox7.Text))
+
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -84,20 +88,16 @@ namespace WOLFSFITNESSMARKET
 
         private void LimpiarCampos()
         {
-            guna2TextBox1.Clear();
-            guna2TextBox2.Clear();
-            guna2TextBox3.Clear();
-            guna2TextBox4.Clear();
-            guna2TextBox5.Clear();
-            guna2TextBox6.Clear();
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+            textBox7.Clear();
         }
 
-        private void guna2TextBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button2_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
@@ -114,12 +114,12 @@ namespace WOLFSFITNESSMARKET
 
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            command.Parameters.AddWithValue("@Nombre", guna2TextBox1.Text);
-                            command.Parameters.AddWithValue("@Descripcion", guna2TextBox2.Text);
-                            command.Parameters.AddWithValue("@PrecioCosto", decimal.Parse(guna2TextBox3.Text));
-                            command.Parameters.AddWithValue("@PrecioVenta", decimal.Parse(guna2TextBox4.Text));
-                            command.Parameters.AddWithValue("@StockActual", int.Parse(guna2TextBox5.Text));
-                            command.Parameters.AddWithValue("@StockMinimo", int.Parse(guna2TextBox6.Text));
+                            command.Parameters.AddWithValue("@Nombre", textBox2.Text);
+                            command.Parameters.AddWithValue("@Descripcion", textBox3.Text);
+                            command.Parameters.AddWithValue("@PrecioCosto", decimal.Parse(textBox4.Text));
+                            command.Parameters.AddWithValue("@PrecioVenta", decimal.Parse(textBox5.Text));
+                            command.Parameters.AddWithValue("@StockActual", int.Parse(textBox6.Text));
+                            command.Parameters.AddWithValue("@StockMinimo", int.Parse(textBox7.Text));
 
                             int rowsAffected = command.ExecuteNonQuery();
 
@@ -143,31 +143,31 @@ namespace WOLFSFITNESSMARKET
             }
         }
 
-        private void guna2DataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
-                guna2TextBox8.Text = selectedRow.Cells["ProductoID"].Value.ToString();
-        
+                textBox1.Text = selectedRow.Cells["ProductoID"].Value.ToString();
+
             }
-
         }
 
-        private void guna2DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             /// Verificar si el cambio ocurrió en una fila válida y una columna válida
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 // Obtener los valores de las celdas modificadas en la fila
-                int productoId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["ProductoID"].Value);
-                string nombre = guna2DataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
-                string descripcion = guna2DataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
-                decimal precioCosto = Convert.ToDecimal(guna2DataGridView1.Rows[e.RowIndex].Cells["PrecioCosto"].Value);
-                decimal precioVenta = Convert.ToDecimal(guna2DataGridView1.Rows[e.RowIndex].Cells["PrecioVenta"].Value);
-                int stockActual = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["StockActual"].Value);
-                int stockMinimo = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["StockMinimo"].Value);
+                int productoId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ProductoID"].Value);
+                string nombre = dataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                string descripcion = dataGridView1.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
+                decimal precioCosto = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioCosto"].Value);
+                decimal precioVenta = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["PrecioVenta"].Value);
+                int stockActual = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["StockActual"].Value);
+                int stockMinimo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["StockMinimo"].Value);
 
                 // Confirmación de actualización
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar este producto?",
@@ -225,12 +225,12 @@ namespace WOLFSFITNESSMARKET
                     CargarDatosInventario();
                 }
             }
-
         }
 
-        private void guna2Button3_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(guna2TextBox8.Text))
+
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 MessageBox.Show("Por favor, seleccione un producto para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -240,7 +240,7 @@ namespace WOLFSFITNESSMARKET
             if (result == DialogResult.Yes)
             {
                 string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
-                int productoId = Convert.ToInt32(guna2TextBox8.Text);
+                int productoId = Convert.ToInt32(textBox1.Text);
                 string query = "DELETE FROM Inventario WHERE ProductoID = @ProductoID";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -275,99 +275,66 @@ namespace WOLFSFITNESSMARKET
             }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-            string searchTerm = guna2TextBox7.Text.Trim();
-
-            // Si el cuadro de texto está vacío, mostrar todos los productos
-            if (string.IsNullOrEmpty(searchTerm))
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres cerrar?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                CargarDatosInventario();  // Cargar todos los datos de nuevo
-                return;
+                this.Close();
             }
+        }
 
-            // Cadena de conexión
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+          
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+            // Cadena de conexión a tu base de datos
             string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
-
-            // Consulta SQL para buscar solo por ProductoID
-            string query = "SELECT * FROM Inventario WHERE ProductoID = @SearchTerm";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                try
+                // Consulta SQL dinámica
+                string query = @"
+SELECT *
+FROM Inventario
+WHERE 
+    (CAST(ProductoID AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+    (Nombre LIKE '%' + @Busqueda + '%') OR
+    (Descripcion LIKE '%' + @Busqueda + '%') OR
+    (CAST(PrecioCosto AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+    (CAST(PrecioVenta AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+    (CAST(StockActual AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+    (CAST(StockMinimo AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+    (CONVERT(NVARCHAR, FechaIngreso, 120) LIKE '%' + @Busqueda + '%');
+";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    // Parámetro para la búsqueda
+                    command.Parameters.AddWithValue("@Busqueda", textBox8.Text);
+
+                    // Abrir la conexión
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Verificar si el término de búsqueda es un número (ID del producto)
-                        if (int.TryParse(searchTerm, out int productoId))
-                        {
-                            // Si es un número, lo buscamos por ProductoID
-                            command.Parameters.AddWithValue("@SearchTerm", productoId);  // Buscar por ProductoID
+                    // Ejecutar el comando y llenar el DataTable con los resultados
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable results = new DataTable();
+                    adapter.Fill(results);
 
-                            // Ejecutar la consulta y llenar el DataTable
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Verificar si se encontraron resultados
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Asignar los resultados al DataGridView
-                                guna2DataGridView1.DataSource = dataTable;
-                            }
-                            else
-                            {
-                                // Si no hay resultados, mostrar un mensaje opcional o limpiar el DataGridView
-                                MessageBox.Show("No se encontraron resultados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                guna2DataGridView1.DataSource = null;  // Limpiar la vista del DataGridView si no hay resultados
-                            }
-                        }
-                        else
-                        {
-                            // Si no es un número, buscar por nombre del producto
-                            string queryByName = "SELECT * FROM Inventario WHERE Nombre LIKE @SearchTerm";
-                            command.CommandText = queryByName;
-                            command.Parameters.Clear();  // Limpiar los parámetros previos
-                            command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");  // Buscar por nombre
-
-                            // Ejecutar la consulta y llenar el DataTable
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Verificar si se encontraron resultados
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Asignar los resultados al DataGridView
-                                guna2DataGridView1.DataSource = dataTable;
-                            }
-                            else
-                            {
-                                // Si no hay resultados, mostrar un mensaje opcional o limpiar el DataGridView
-                                MessageBox.Show("No se encontraron resultados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                guna2DataGridView1.DataSource = null;  // Limpiar la vista del DataGridView si no hay resultados
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrió un error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Mostrar los resultados en un DataGridView (ajusta el nombre del control según tu diseño)
+                    dataGridView1.DataSource = results;
                 }
             }
-
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void iconButton1_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
+            LimpiarCampos();
+            CargarDatosInventario();
         }
     }
 }

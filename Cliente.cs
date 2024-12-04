@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Guna.UI2.WinForms;
 
 namespace WOLFSFITNESSMARKET
 {
-    public partial class Clientes : MetroFramework.Forms.MetroForm
+    public partial class Cliente : Form
     {
-        public Clientes()
+        public Cliente()
         {
             InitializeComponent();
         }
 
-        private void Clientes_Load(object sender, EventArgs e)
+        private void Cliente_Load(object sender, EventArgs e)
         {
             CargarDatosClientes();
         }
@@ -59,7 +60,7 @@ namespace WOLFSFITNESSMARKET
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    guna2DataGridView1.DataSource = dataTable;
+                    dataGridView1.DataSource = dataTable;
                 }
                 catch (Exception ex)
                 {
@@ -70,10 +71,10 @@ namespace WOLFSFITNESSMARKET
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrWhiteSpace(guna2TextBox1.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox2.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox3.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox4.Text)) // Asegúrate de que todos los campos estén completos
+            if (string.IsNullOrWhiteSpace(textBox2 .Text) ||
+                string.IsNullOrWhiteSpace(textBox3 .Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                string.IsNullOrWhiteSpace(textBox5.Text)) // Asegúrate de que todos los campos estén completos
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -83,23 +84,21 @@ namespace WOLFSFITNESSMARKET
 
         private void LimpiarCampos()
         {
-            guna2TextBox1.Clear();
-            guna2TextBox2.Clear();
-            guna2TextBox3.Clear();
-            guna2TextBox4.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
         }
 
-
-
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void guna2Button3_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado un cliente
-            if (string.IsNullOrWhiteSpace(guna2TextBox6.Text)) // Suponiendo que guna2TextBox5 contiene el ID del cliente
+            if (string.IsNullOrWhiteSpace(textBox1.Text)) // Suponiendo que guna2TextBox5 contiene el ID del cliente
             {
                 MessageBox.Show("Por favor, seleccione un cliente para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -113,7 +112,7 @@ namespace WOLFSFITNESSMARKET
                 string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                 // Obtener el ID del cliente seleccionado
-                int clienteId = Convert.ToInt32(guna2TextBox6.Text);
+                int clienteId = Convert.ToInt32(textBox1.Text);
 
                 // Consulta SQL para eliminar el cliente
                 string query = "DELETE FROM Clientes WHERE ClienteID = @ClienteID";
@@ -150,19 +149,18 @@ namespace WOLFSFITNESSMARKET
                     }
                 }
             }
-
         }
 
-        private void guna2Button2_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             // Cadena de conexión
             string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Variables para capturar los datos del cliente
-            string nombre = guna2TextBox1.Text;
-            string direccion = guna2TextBox2.Text;
-            string telefono = guna2TextBox3.Text;
-            string correo = guna2TextBox4.Text;
+            string nombre = textBox2.Text;
+            string direccion = textBox3.Text;
+            string telefono = textBox4.Text;
+            string correo = textBox5.Text;
 
             // Validar que todos los campos estén llenos
             if (ValidarCampos())
@@ -207,21 +205,16 @@ namespace WOLFSFITNESSMARKET
             }
         }
 
-        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 // Obtener los valores de la fila y columna editada
-                int clienteId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["ClienteID"].Value);
-                string nombre = guna2DataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
-                string direccion = guna2DataGridView1.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
-                string telefono = guna2DataGridView1.Rows[e.RowIndex].Cells["Telefono"].Value.ToString();
-                string correo = guna2DataGridView1.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+                int clienteId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ClienteID"].Value);
+                string nombre = dataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                string direccion = dataGridView1.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
+                string telefono = dataGridView1.Rows[e.RowIndex].Cells["Telefono"].Value.ToString();
+                string correo = dataGridView1.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
 
                 // Mostrar un mensaje de confirmación
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar este cliente?",
@@ -276,27 +269,27 @@ namespace WOLFSFITNESSMARKET
                 else
                 {
                     // Si el usuario hace clic en 'No', deshacer el cambio en la celda
-                    guna2DataGridView1.CancelEdit();
+                    dataGridView1.CancelEdit();
                     CargarDatosClientes();
 
                 }
             }
         }
 
-        private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila seleccionada
-                DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
                 // Asignar los valores de las celdas de la fila a los TextBox
-                guna2TextBox6.Text = selectedRow.Cells["ClienteID"].Value.ToString();  // Ajusta el nombre de la columna
+                textBox1.Text = selectedRow.Cells["ClienteID"].Value.ToString();  // Ajusta el nombre de la columna
 
             }
         }
 
-     private void guna2TextBox5_TextChanged(object sender, EventArgs e)
+        private void textBox6_TextChanged(object sender, EventArgs e)
         {
             // Cadena de conexión a tu base de datos
             string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
@@ -305,21 +298,21 @@ namespace WOLFSFITNESSMARKET
             {
                 // Consulta SQL dinámica
                 string query = @"
-        SELECT *
-        FROM Clientes
-        WHERE 
-            (CAST(ClienteID AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
-            (Nombre LIKE '%' + @Busqueda + '%') OR
-            (Direccion LIKE '%' + @Busqueda + '%') OR
-            (Telefono LIKE '%' + @Busqueda + '%') OR
-            (Correo LIKE '%' + @Busqueda + '%') OR
-            (CONVERT(NVARCHAR, FechaRegistro, 120) LIKE '%' + @Busqueda + '%');
-        ";
+SELECT *
+FROM Clientes
+WHERE 
+    (CAST(ClienteID AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+    (Nombre LIKE '%' + @Busqueda + '%') OR
+    (Direccion LIKE '%' + @Busqueda + '%') OR
+    (Telefono LIKE '%' + @Busqueda + '%') OR
+    (Correo LIKE '%' + @Busqueda + '%') OR
+    (CONVERT(NVARCHAR, FechaRegistro, 120) LIKE '%' + @Busqueda + '%');
+";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     // Parámetro para la búsqueda
-                    command.Parameters.AddWithValue("@Busqueda", guna2TextBox5.Text);
+                    command.Parameters.AddWithValue("@Busqueda", textBox6.Text);
 
                     // Abrir la conexión
                     connection.Open();
@@ -330,20 +323,35 @@ namespace WOLFSFITNESSMARKET
                     adapter.Fill(results);
 
                     // Mostrar los resultados en un DataGridView (ajusta el nombre del control según tu diseño)
-                    guna2DataGridView1.DataSource = results;
+                    dataGridView1.DataSource = results;
                 }
             }
+
         }
 
-        private void guna2TextBox5_Click(object sender, EventArgs e)
+        private void textBox6_Click(object sender, EventArgs e)
         {
-            guna2TextBox5.Clear();
+            textBox6.Clear();
         }
 
-        private void guna2Button1_Click_1(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres cerrar?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            CargarDatosClientes();
+        }
     }
 }
-

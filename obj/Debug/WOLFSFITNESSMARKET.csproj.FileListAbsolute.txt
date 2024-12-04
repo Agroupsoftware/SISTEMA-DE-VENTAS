@@ -142,18 +142,14 @@ C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKE
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.exe.config
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.AbonarCobrar.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.AbonarPagar.resources
-C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Clientes.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Compras.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.CuentasCobrar.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.CuentasPagar.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.DetallesCompra.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.DetallesVenta.resources
-C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Inventario.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Login.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Menu.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Properties.Resources.resources
-C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Proveedores.resources
-C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Usuarios.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Ventas.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.csproj.GenerateResource.cache
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.csproj.CoreCompileInputs.cache
@@ -162,3 +158,7 @@ C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKE
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.pdb
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Logofijocs.resources
 C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Cliente.resources
+C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Usuario.resources
+C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Proveedore.resources
+C:\Users\jeffe\OneDrive\Escritorio\Sistema-de-Venta-\obj\Debug\WOLFSFITNESSMARKET.Inventary.resources

@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Guna.UI2.WinForms;
 
 namespace WOLFSFITNESSMARKET
 {
-    public partial class Usuarios : MetroFramework.Forms.MetroForm
+    public partial class Usuario : Form
     {
-        public Usuarios()
+        public Usuario()
         {
             InitializeComponent();
+        }
 
+        private void Usuario_Load(object sender, EventArgs e)
+        {
+            CargarDatosUsuarios();
         }
 
         protected override void WndProc(ref Message m)
@@ -36,10 +41,6 @@ namespace WOLFSFITNESSMARKET
             }
         }
 
-        private void Usuarios_Load(object sender, EventArgs e)
-        {
-            CargarDatosUsuarios();
-        }
         private void CargarDatosUsuarios()
         {
             // Cadena de conexión con autenticación de Windows
@@ -65,7 +66,7 @@ namespace WOLFSFITNESSMARKET
                     adapter.Fill(dataTable);
 
                     // Asignar el DataTable al DataSource del DataGridView
-                    guna2DataGridView1.DataSource = dataTable;
+                    dataGridView1.DataSource = dataTable;
                 }
                 catch (Exception ex)
                 {
@@ -75,14 +76,13 @@ namespace WOLFSFITNESSMARKET
             }
         }
 
-        // Método para validar que todos los campos estén llenos
         private bool ValidarCampos()
         {
             // Validamos que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(guna2TextBox1.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox2.Text) ||
-                string.IsNullOrWhiteSpace(guna2TextBox3.Text) ||
-                guna2ComboBox1.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(textBox2.Text) ||
+                string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                comboBox1.SelectedIndex == -1)
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -93,29 +93,34 @@ namespace WOLFSFITNESSMARKET
         // Método para limpiar los campos
         private void LimpiarCampos()
         {
-            guna2TextBox1.Clear();
-            guna2TextBox2.Clear();
-            guna2TextBox3.Clear();
-            guna2ComboBox1.SelectedIndex = -1; // Desmarca la opción seleccionada en el ComboBox
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            comboBox1.SelectedIndex = -1; // Desmarca la opción seleccionada en el ComboBox
         }
 
 
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres cerrar?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+
             // Cadena de conexión
             string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Variables para capturar los datos del usuario
-            string nombre = guna2TextBox1.Text;
-            string correo = guna2TextBox2.Text;
-            string contrasena = guna2TextBox3.Text;
-            string rol = guna2ComboBox1.SelectedItem?.ToString();  // Usamos el operador null-conditional para evitar null referencia
+            string nombre = textBox2.Text;
+            string correo = textBox3.Text;
+            string contrasena = textBox4.Text;
+            string rol = comboBox1.SelectedItem?.ToString();  // Usamos el operador null-conditional para evitar null referencia
 
             // Validar que todos los campos estén llenos
             if (ValidarCampos())
@@ -167,10 +172,10 @@ namespace WOLFSFITNESSMARKET
             }
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado un usuario
-            if (string.IsNullOrWhiteSpace(guna2TextBox5.Text))  // Suponiendo que guna2TextBox5 contiene el ID del usuario
+            if (string.IsNullOrWhiteSpace(textBox1.Text))  // Suponiendo que guna2TextBox5 contiene el ID del usuario
             {
                 MessageBox.Show("Por favor, seleccione un usuario para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -184,7 +189,7 @@ namespace WOLFSFITNESSMARKET
                 string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                 // Obtener el ID del usuario seleccionado
-                int usuarioId = Convert.ToInt32(guna2TextBox5.Text);
+                int usuarioId = Convert.ToInt32(textBox1.Text);
 
                 // Consulta SQL para eliminar el usuario
                 string query = "DELETE FROM Usuarios WHERE UsuarioID = @UsuarioID";
@@ -221,113 +226,32 @@ namespace WOLFSFITNESSMARKET
                     }
                 }
             }
-
         }
 
-        private void guna2DataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificamos que se haya hecho clic en una fila válida (no en los encabezados de columna)
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila seleccionada
-                DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
                 // Asignar los valores de las celdas de la fila a los TextBox
-                guna2TextBox5.Text = selectedRow.Cells["UsuarioID"].Value.ToString();  // Ajusta el nombre de la columna
+                textBox1.Text = selectedRow.Cells["UsuarioID"].Value.ToString();  // Ajusta el nombre de la columna
             }
         }
 
-        private void Usuarios_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            string searchTerm = guna2TextBox4.Text.Trim();
-
-            // Si el cuadro de texto está vacío, mostrar todos los usuarios
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                CargarDatosUsuarios();  // Cargar todos los datos de nuevo
-                return;
-            }
-
-            // Cadena de conexión
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
-
-            // Consulta SQL para buscar solo por UsuarioID
-            string query = "SELECT * FROM Usuarios WHERE UsuarioID = @SearchTerm";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Verificar si el término de búsqueda es un número (ID)
-                        if (int.TryParse(searchTerm, out int usuarioId))
-                        {
-                            // Si es un número, lo buscamos por ID
-                            command.Parameters.AddWithValue("@SearchTerm", usuarioId);  // Buscar por ID
-
-                            // Ejecutar la consulta y llenar el DataTable
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable dataTable = new DataTable();
-                            adapter.Fill(dataTable);
-
-                            // Verificar si se encontraron resultados
-                            if (dataTable.Rows.Count > 0)
-                            {
-                                // Asignar los resultados al DataGridView
-                                guna2DataGridView1.DataSource = dataTable;
-                            }
-                            else
-                            {
-                                // Si no hay resultados, mostrar un mensaje opcional o limpiar el DataGridView
-                                MessageBox.Show("No se encontraron resultados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                guna2DataGridView1.DataSource = null;  // Limpiar la vista del DataGridView si no hay resultados
-                            }
-                        }
-                        else
-                        {
-                            // Si no es un número, mostrar un mensaje de error
-                            MessageBox.Show("Por favor, ingresa un ID válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            guna2DataGridView1.DataSource = null;  // Limpiar la vista del DataGridView si no es un ID válido
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrió un error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void guna2DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Verificamos que la celda modificada no sea una de las cabeceras o celdas vacías
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 // Obtener los valores de la fila y columna editada
-                int usuarioId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["UsuarioID"].Value);
-                string nombre = guna2DataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
-                string correo = guna2DataGridView1.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
-                string contrasena = guna2DataGridView1.Rows[e.RowIndex].Cells["Contrasena"].Value.ToString();
-                string rol = guna2DataGridView1.Rows[e.RowIndex].Cells["Rol"].Value.ToString();
+                int usuarioId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["UsuarioID"].Value);
+                string nombre = dataGridView1.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                string correo = dataGridView1.Rows[e.RowIndex].Cells["Correo"].Value.ToString();
+                string contrasena = dataGridView1.Rows[e.RowIndex].Cells["Contrasena"].Value.ToString();
+                string rol = dataGridView1.Rows[e.RowIndex].Cells["Rol"].Value.ToString();
 
                 // Mostrar un mensaje de confirmación
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar este usuario?",
@@ -382,7 +306,7 @@ namespace WOLFSFITNESSMARKET
                 else
                 {
                     // Si el usuario hace clic en 'No', deshacer el cambio en la celda
-                    guna2DataGridView1.CancelEdit();
+                    dataGridView1.CancelEdit();
                     CargarDatosUsuarios();
 
                 }
@@ -391,9 +315,49 @@ namespace WOLFSFITNESSMARKET
 
         }
 
-        private void guna2TextBox4_Click(object sender, EventArgs e)
+        private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            guna2TextBox4.Clear();
+            // Cadena de conexión a tu base de datos
+            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Consulta SQL dinámica
+                string query = @"
+        SELECT *
+        FROM Usuarios
+        WHERE 
+            (CAST(UsuarioID AS NVARCHAR) LIKE '%' + @Busqueda + '%') OR
+            (Nombre LIKE '%' + @Busqueda + '%') OR
+            (Correo LIKE '%' + @Busqueda + '%') OR
+            (contrasena LIKE '%' + @Busqueda + '%') OR
+            (Rol LIKE '%' + @Busqueda + '%') OR
+            (CONVERT(NVARCHAR, FechaCreacion, 120) LIKE '%' + @Busqueda + '%');
+        ";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Parámetro para la búsqueda
+                    command.Parameters.AddWithValue("@Busqueda", textBox6.Text);
+
+                    // Abrir la conexión
+                    connection.Open();
+
+                    // Ejecutar el comando y llenar el DataTable con los resultados
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable results = new DataTable();
+                    adapter.Fill(results);
+
+                    // Mostrar los resultados en un DataGridView (ajusta el nombre del control según tu diseño)
+                    dataGridView1.DataSource = results;
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            CargarDatosUsuarios();
         }
     }
 }

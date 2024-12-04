@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WOLFSFITNESSMARKET
 {
-    public partial class Compras : MetroFramework.Forms.MetroForm
+    public partial class Compras : Form
     {
         public Compras()
         {
@@ -20,6 +20,15 @@ namespace WOLFSFITNESSMARKET
         private void Compras_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres cerrar?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
