@@ -44,7 +44,7 @@ namespace WOLFSFITNESSMARKET
         private void CargarDatosUsuarios()
         {
             // Cadena de conexión con autenticación de Windows
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
 
             // Consulta SQL para seleccionar los datos de la tabla usuario
@@ -114,7 +114,7 @@ namespace WOLFSFITNESSMARKET
         {
 
             // Cadena de conexión
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Variables para capturar los datos del usuario
             string nombre = textBox2.Text;
@@ -186,7 +186,7 @@ namespace WOLFSFITNESSMARKET
             if (result == DialogResult.Yes)
             {
                 // Cadena de conexión
-                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                 // Obtener el ID del usuario seleccionado
                 int usuarioId = Convert.ToInt32(textBox1.Text);
@@ -263,7 +263,7 @@ namespace WOLFSFITNESSMARKET
                 if (result == DialogResult.Yes)
                 {
                     // Cadena de conexión
-                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                     // Consulta SQL para actualizar el usuario
                     string query = "UPDATE Usuarios SET Nombre = @Nombre, Correo = @Correo, Contrasena = @Contrasena, Rol = @Rol WHERE UsuarioID = @UsuarioID";
@@ -318,7 +318,7 @@ namespace WOLFSFITNESSMARKET
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             // Cadena de conexión a tu base de datos
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

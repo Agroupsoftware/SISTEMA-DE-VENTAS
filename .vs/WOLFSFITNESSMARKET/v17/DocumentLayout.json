@@ -1,10 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\",
+  "WorkspaceRootPath": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\jeffe\\onedrive\\escritorio\\sistema-de-venta-\\cuentascobrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:cuentascobrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\agrou\\desktop\\sistema-de-venta-\\compras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:compras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\agrou\\desktop\\sistema-de-venta-\\compras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:compras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\agrou\\desktop\\sistema-de-venta-\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\agrou\\desktop\\sistema-de-venta-\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\agrou\\desktop\\sistema-de-venta-\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|c:\\users\\agrou\\desktop\\sistema-de-venta-\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EB27CE21-65C8-49E5-B427-6BBD8044AEB2}|WOLFSFITNESSMARKET.csproj|solutionrelative:cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,18 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CuentasCobrar.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\CuentasCobrar.cs",
-              "RelativeDocumentMoniker": "CuentasCobrar.cs",
-              "ToolTip": "C:\\Users\\jeffe\\OneDrive\\Escritorio\\Sistema-de-Venta-\\CuentasCobrar.cs [Dise\u00F1o]",
-              "RelativeToolTip": "CuentasCobrar.cs [Dise\u00F1o]",
+              "DocumentIndex": 4,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-04T03:50:10.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Cliente.cs",
+              "RelativeDocumentMoniker": "Cliente.cs",
+              "ToolTip": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Cliente.cs",
+              "RelativeToolTip": "Cliente.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAtwDUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T00:24:37.101Z",
+              "WhenOpened": "2024-12-04T02:31:42.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Compras.cs",
+              "DocumentMoniker": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Compras.cs",
+              "RelativeDocumentMoniker": "Compras.cs",
+              "ToolTip": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Compras.cs",
+              "RelativeToolTip": "Compras.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAQwG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T02:26:51.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T02:06:42.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Compras.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Compras.cs",
+              "RelativeDocumentMoniker": "Compras.cs",
+              "ToolTip": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Compras.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Compras.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T02:06:21.887Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cliente.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Cliente.cs",
+              "RelativeDocumentMoniker": "Cliente.cs",
+              "ToolTip": "C:\\Users\\agrou\\Desktop\\Sistema-de-Venta-\\Cliente.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Cliente.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T02:06:19.779Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

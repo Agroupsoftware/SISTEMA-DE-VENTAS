@@ -48,7 +48,8 @@ namespace WOLFSFITNESSMARKET
 
         private void CargarDatosInventario()
         {
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = @"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            ;
             string query = "SELECT * FROM Inventario";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -99,7 +100,7 @@ namespace WOLFSFITNESSMARKET
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString = @"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             if (ValidarCampos())
             {
@@ -178,7 +179,7 @@ namespace WOLFSFITNESSMARKET
                 if (result == DialogResult.Yes)
                 {
                     // Cadena de conexión a la base de datos
-                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString = @"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                     // Consulta de actualización SQL
                     string query = "UPDATE Inventario SET Nombre = @Nombre, Descripcion = @Descripcion, PrecioCosto = @PrecioCosto, " +
                                    "PrecioVenta = @PrecioVenta, StockActual = @StockActual, StockMinimo = @StockMinimo WHERE ProductoID = @ProductoID";
@@ -239,7 +240,7 @@ namespace WOLFSFITNESSMARKET
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString = @"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                 int productoId = Convert.ToInt32(textBox1.Text);
                 string query = "DELETE FROM Inventario WHERE ProductoID = @ProductoID";
 
@@ -293,7 +294,7 @@ namespace WOLFSFITNESSMARKET
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             // Cadena de conexión a tu base de datos
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

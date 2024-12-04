@@ -43,7 +43,7 @@ namespace WOLFSFITNESSMARKET
 
         private void CargarDatosProveedores()
         {
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
             string query = "SELECT * FROM Proveedores";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -88,7 +88,7 @@ namespace WOLFSFITNESSMARKET
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             if (ValidarCampos())
             {
@@ -140,7 +140,7 @@ namespace WOLFSFITNESSMARKET
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este proveedor?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                 int proveedorId = Convert.ToInt32(textBox1.Text);
                 string query = "DELETE FROM Proveedores WHERE ProveedorID = @ProveedorID";
 
@@ -194,7 +194,7 @@ namespace WOLFSFITNESSMARKET
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
                     string query = "UPDATE Proveedores SET Nombre = @Nombre, Direccion = @Direccion, Telefono = @Telefono, Correo = @Correo WHERE ProveedorID = @ProveedorID";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -253,7 +253,7 @@ namespace WOLFSFITNESSMARKET
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             // Cadena de conexión a tu base de datos
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

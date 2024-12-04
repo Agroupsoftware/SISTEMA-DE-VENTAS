@@ -45,7 +45,7 @@ namespace WOLFSFITNESSMARKET
         private void CargarDatosClientes()
         {
             // Cadena de conexión con autenticación de Windows
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Consulta SQL para seleccionar los datos de la tabla Clientes
             string query = "SELECT * FROM Clientes";
@@ -109,7 +109,7 @@ namespace WOLFSFITNESSMARKET
             if (result == DialogResult.Yes)
             {
                 // Cadena de conexión
-                string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                 // Obtener el ID del cliente seleccionado
                 int clienteId = Convert.ToInt32(textBox1.Text);
@@ -154,7 +154,7 @@ namespace WOLFSFITNESSMARKET
         private void button1_Click(object sender, EventArgs e)
         {
             // Cadena de conexión
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             // Variables para capturar los datos del cliente
             string nombre = textBox2.Text;
@@ -225,7 +225,7 @@ namespace WOLFSFITNESSMARKET
                 if (result == DialogResult.Yes)
                 {
                     // Cadena de conexión
-                    string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+                    string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
                     // Consulta SQL para actualizar el cliente
                     string query = "UPDATE Clientes SET Nombre = @Nombre, Direccion = @Direccion, Telefono = @Telefono, Correo = @Correo WHERE ClienteID = @ClienteID";
@@ -292,7 +292,7 @@ namespace WOLFSFITNESSMARKET
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             // Cadena de conexión a tu base de datos
-            string connectionString = "Server=JEFFERSON\\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
+            string connectionString =@"Server=DESKTOP-5G47S2B\SQLEXPRESS;Database=WOLFSFITNESSMARKET;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
